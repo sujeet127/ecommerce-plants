@@ -18,15 +18,17 @@
     width:80%;
     
 }
-.form-container{
-    margin-top: 15%;
-    margin-left: 20%;
-    width: 90%;
-    align-items: center;
+
+    .form-container {
+        margin-top: 5%;
+        margin-left: 28%;
+        width: 90%;
+        align-items: center;
+    }
     
     
-}
-.form-control{
+
+    .left-container .form-control{
     outline: none;
     border-bottom: 3px solid green !important;
     
@@ -72,17 +74,20 @@
         margin-left: 22%;
         
     }
+    .react-bootstrap-table table{
+       margin: 0px;
+       
+    }
+    
   }
  
-  input.form-control, input.form-control:focus {
+  .left-container input.form-control, input.form-control:focus {
     background: white;
     border: none;
+    margin: 2px;
   }
   .left-container{
-    flex: 1;
-    flex-grow: 1;
-    flex-shrink: 1;
-    flex-basis: 0%;
+    
     background-color: white
 
   }
@@ -172,9 +177,11 @@ img{
     padding: 2px;
     height: 64px !important;
 }
-.text-center{
-    padding-top: 20px;
-    font-weight: 700;
-    font-family: 'Rubik', sans-serif;
-    font-size: 26px;
+
+.registration-img{
+    width: 100%;
+    height: 80vh;
+}
+h1{
+    font-family: 'rubik';
 }

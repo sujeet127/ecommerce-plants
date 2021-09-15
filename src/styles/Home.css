@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap');
+.box-container-footer {
+    position: absolute;
+    width: 80%;
+    height: 26.25rem;
+    box-shadow: 2px 3px dark;
+    top:92rem;
+    font-family: "Playfair Display";
+    margin: 9.375rem;
+    background-color: white;
+    border: 2px solid black;
+    
+    
+}
+@media only screen and (max-width: 768px)  {
+    .box-container-footer{
+        position: inherit;
+        width: 100%;
+        top: 2rem !important;;
+        margin: 0.5rem;
+        border: none;
+    }
+    #main-body{
+        margin: 0 !important;
+    }
+    #main-body  #first-img{
+        width: 100%!important;
+        
+    }
+    .container-margin{
+        position: inherit;
+        top: 160rem !important;
+        
+    }
+    
+    
+    
+}
+h3{
+    font-family: "Nunito Sans";
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+.col img{
+    width: 50px;
+    height: 50px;
+}
+.container-margin{
+    
+    position: absolute;
+    width: 100%;
+    
+    
+    box-shadow: 2px 3px dark;
+    top:130rem;
+    font-family: "Playfair Display";
+    
+    background-color: rgb(243, 248, 233);
+
+}
+#footer-image{
+    height: 20rem;
+    width: 20rem;
+    margin-bottom: 2rem;
+}
+.container-margin h3{
+    font-family: "Rubik";
+    
+    font-size: 18px;
+}
+ul li{
+    font-family: "Rubik";
+    font-size: 12px;
+    color: #8aaab7;
+    line-height:24px;
+}
+#footer-header{
+    font-family: "Rubik";
+    font-size: 20px;
+    font-weight: 500;
+}
+table tr td img{
+    width: 36px;
+    height: 36px;
+    
+}
+table tr{
+    margin: 2rem;
+    width: 40%;
+}
+#socialmedia{
+    margin: 2rem;
+    
+}
+#socialmedia .col img{
+    width: 26px;
+    height: 26px;
+}
+#socialmedia .col a:hover{
+    color: black;
+    transform: scale(2)
+
+}
+.footer{
+    margin-top: 66rem;
+}
+#main-body{
+    margin: 4rem;
+    padding: 10rem;
+}
+#main-body .col img{
+    width: 100%;
+    height: 25rem;
+    border-radius: .6rem;
+}
+#main-body  #first-img{
+    width: 40rem;
+}
+.box-container .container h1{
+    font-family: "Playfair Display";;
+
+}
+#subscribe{
+    
+    border-bottom: none !important;
+    outline: none;
+}

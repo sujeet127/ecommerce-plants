@@ -1,13 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  
+  font-family:'Rubik', sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding: 0%;
+  letter-spacing: 0.6px;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+.pageNotFound{
+  position: fixed;
+  width: 100vw;
+  height: 100vw;
+  top:0;
+  background-color: #fff;;
+  display: flex;
+  justify-content: center;
+  padding: 200px;
+  
+}
+.mt-5{
+  margin-top:5%;
+}
+.ml-5{
+  margin-left:5%;
+}
+.ml-10{
+  margin-left:10%;
+}
+.ml-20{
+  margin-left: 20%;
+}
+.ml-15{
+  margin-left: 15%;
+}
+.sr-only{
+  display: none;
+}
+.carousel-caption {
+  font-family: 'Playfair Display', sans-serif;
+  position: absolute;
+  right: 15%;
+  top: 1.25rem;
+  left: 15%;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  color: rgb(0, 0, 0)!important;
+  text-align: center;
 }
