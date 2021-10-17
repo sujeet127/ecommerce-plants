@@ -22,6 +22,9 @@ function ViewProduct(props) {
 
         setProduct(result.data.data);
     }
+    const back=()=>{
+        window.history.back();
+    }
     return (
         <div>
             <div className="container">
@@ -41,7 +44,7 @@ function ViewProduct(props) {
                                 </ul>
                             </div>
 
-                            <Link className="btn btn-dark w-100 mt-5" to="/producthome">Back </Link>
+                            <button className="btn btn-dark w-100 mt-5" onClick={back}>Back </button>
                         </div>
                     </div>
                     <div className="col-md-6">

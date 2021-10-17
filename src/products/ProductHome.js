@@ -1,11 +1,10 @@
 import axios from 'axios';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, createContext } from 'react';
 import $ from 'jquery';
 import '../../node_modules/bootstrap/js/dist/dropdown'
 import { Link, NavLink, withRouter } from 'react-router-dom'
 
 import ProductNavbar from './ProductNavbar';
-import ViewProduct from './ViewProduct';
 import { Login } from '../components/pages/Login';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 import BootstrapTable from 'react-bootstrap-table-next';
@@ -15,14 +14,22 @@ import 'react-bootstrap-table2-filter/dist/react-bootstrap-table2-filter.min.css
 import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
 import 'react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit.min.css';
 import ToolkitProvider, { Search, CSVExport } from 'react-bootstrap-table2-toolkit';
+import UserProduct from '../components/users/UserProduct';
 
-
+export const searchBarTerm=createContext();
  function ProductHome(props) {
   const [products, setProduct] = useState([]);
   
   
   const [searchData, setSearchData] = useState('');
-  console.log(searchData);
+  
+  const GetSearchData=(item)=>{
+    console.warn("item",item);
+    setSearchData(item);
+    console.log(searchData);
+
+  }
+  
 
 
 
@@ -114,7 +121,10 @@ import ToolkitProvider, { Search, CSVExport } from 'react-bootstrap-table2-toolk
   if (props.user) {
     return <>
       <div >
+        <searchBarTerm.Provider value={{getSearchData:GetSearchData}}>
         <ProductNavbar user={props.user} />
+        </searchBarTerm.Provider>
+        
 
 
 
@@ -135,21 +145,22 @@ import ToolkitProvider, { Search, CSVExport } from 'react-bootstrap-table2-toolk
               keyField="id"
               columns={columns}
               data={products}
-              search 
+              search={ { defaultSearch: searchData } }
+
               exportCSV>{
                 props => (
                   <div>
                     <MyExportCSV {...props.csvProps} />
                     <SearchBar { ...props.searchProps } />
+                    
                     <hr />
                     <BootstrapTable hover 
                       pagination={pagination}
                       filter={filterFactory()}
                       wrapperClasses="table-responsive" 
-                      
-                      
                       {...props.baseProps}
                     />
+                    
                   </div>
                 )
 
@@ -216,12 +227,13 @@ import ToolkitProvider, { Search, CSVExport } from 'react-bootstrap-table2-toolk
     </>
   } else
     return (
-      <div className="d-flex d-screenheight">
+      <div className="">
 
 
         {/* <h1>You Are not logged in..</h1> */}
         {/* <Link className="btn btn-outline-success" to="/login">Login</Link> */}
-        <Login />
+        
+        <UserProduct/>
 
 
       </div>

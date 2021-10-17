@@ -17,7 +17,7 @@ function Address(props) {
         country: Yup.string()
             .max(15, 'Must be 15 characters or less')
             .required('Required'),
-        fullName: Yup.string()
+        name: Yup.string()
             .max(15, 'Must be 15 characters or less')
             .required('Required'),
         email: Yup.string()
@@ -26,7 +26,6 @@ function Address(props) {
         street:Yup.string()
             .required('Street/Flatno./Building no./Colony is required'),
         city: Yup.string()
-            .min(6, 'Password must be at least 6 charaters')
             .required('city is required'),
         pincode: Yup.string()
             .min(6, 'pincode must be of 6 charaters')
@@ -40,12 +39,13 @@ function Address(props) {
             .matches(phoneRegExp, 'Phone number is not valid' ) 
             
     })
+    const userId=localStorage.getItem("userId");
 
     return (
         <>
 
             <Formik
-                initialValues={{ country: '', fullName: '', street: '', city: '', state: '',pincode:'',email:'' ,phone:''}}
+                initialValues={{ country: '', name: '', street: '', city: '', state: '',pincode:'',email:'' ,phone:''}}
                 validationSchema={validate}
 
                 onSubmit={(values, { setSubmitting }) => {
@@ -53,17 +53,20 @@ function Address(props) {
                     {
                         setSubmitting(false);
 
-                        // axios.post("/api/users/", values)
-                        //     .then(res => {
-                        //         if (res.data.success) {
-                        //             alert("User Registration Completed Successfully");
-                        //             history.push('/login');
-                        //         }
 
-                        //     }).catch(e => {
-                        //         alert(e );
-                        //     })
-                        //     ;
+
+                       values.userId=userId;   
+                        axios.post("/api/address/", values)
+                            .then(res => {
+                                if (res.data.success) {
+                                    alert("Address Added Successfully");
+                                     history.push('/viewaddress');
+                                }
+
+                            }).catch(e => {
+                                alert(e );
+                            })
+                            ;
 
                     }
                 }}
@@ -88,8 +91,8 @@ function Address(props) {
                                                     <ErrorMessage name="country" component="div" className="error" />
                                                 </div>
                                                 <div className="form-group col-12 ">
-                                                    <Field type="text" name="fullName" className="form-control" placeholder="Enter Full Name" />
-                                                    <ErrorMessage name="fullName" component="div" className="error" />
+                                                    <Field type="text" name="name" className="form-control" placeholder="Enter Full Name" />
+                                                    <ErrorMessage name="name" component="div" className="error" />
                                                 </div>
                                                 
                                                 <div className="form-group col-12">
@@ -118,10 +121,12 @@ function Address(props) {
                                                     <Field type="email" name="email" className="form-control" placeholder=" Email " />
                                                     <ErrorMessage name="email" component="div" className="error" />
                                                 </div>
+                                                
 
-                                                <div className="form-group col-12">
+                                                <div className="form-group col-12" >
                                                     <button type="submit" className="btn btn-success w-100" disabled={isSubmitting}>Submit</button>
                                                 </div>
+                                                
                                       
                                             </Form>
                                         </div></div>

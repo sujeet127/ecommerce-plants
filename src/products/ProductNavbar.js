@@ -1,19 +1,16 @@
 import axios from 'axios';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import $ from 'jquery';
 import '../../node_modules/bootstrap/js/dist/dropdown'
 import { Link, NavLink } from 'react-router-dom'
-import AddProduct from './AddProduct';
-import Modal from 'react-bootstrap/Modal';
-import ModalDialog from 'react-bootstrap/ModalDialog'
-import Button from 'react-bootstrap/Button';
-import Table from 'react-bootstrap/Table'
+import {searchBarTerm} from './ProductHome';
 
-export const searchBarInput=React.createContext();
+
 function ProductNavbar(props) {
  const [users, setUser] = useState([]);
  const [searchTerm,setSearchTerm]=useState("");
  const id = localStorage.getItem('userId');
+ const {getSearchData}= useContext(searchBarTerm);
  
  
 
@@ -71,13 +68,15 @@ function ProductNavbar(props) {
                     <li><a className="dropdown-item" href="#">Seeds</a></li>
                   </ul>
                 </li>
-                <form id="product-search-bar" className="d-flex ">
+                <div id="product-search-bar" className="d-flex ">
                   <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" onChange={(e)=>{
                     setSearchTerm(e.target.value);
                     
                   }}/>
-                  <button className="btn btn-outline-success" onClick={()=>searchTerm(searchTerm)} >Search</button>
-                </form>
+                  <button className="btn btn-outline-success" 
+                  onClick={()=>{getSearchData(searchTerm);
+                  }} >Search</button>
+                </div>
 
               </ul>
               <ul className="navbar-nav d-flex  me-5">
@@ -90,13 +89,15 @@ function ProductNavbar(props) {
                     <li> <Link className="dropdown-item" to="/edituser">Update Profile</Link></li>
                     <li><hr className="dropdown-divider" /></li>
                     <li> <Link className="dropdown-item" to="/" onClick={deleteAccount}>Delete Account</Link></li>
+                    <li><hr className="dropdown-divider"  /></li>
+                    <li><Link onClick={() => localStorage.clear()} className="dropdown-item" exact to="/">Logout</Link></li>
                   </ul>
                 </li>
                 <li className="nav-item">
                   <a className="nav-link" href="#">Return and orders</a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">Cart</a>
+                  <NavLink className="nav-link" to="/cart">Cart</NavLink>
                 </li>
               </ul>
 

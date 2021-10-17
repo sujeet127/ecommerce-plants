@@ -24,6 +24,9 @@ import AddProduct from './products/AddProduct';
 import UserProduct from './components/users/UserProduct';
 import Address from './components/users/Address';
 import UserProductView from './components/users/UserProductView';
+import Cart from './components/users/Cart';
+import UserAddress from './components/users/UserAddress';
+import EditAddress from './components/users/EditAddress';
 function App() {
   const [user,setUser]=useState(null);
   useEffect(() => {
@@ -60,6 +63,9 @@ function App() {
         <Route exact path="/userproduct" component={UserProduct}/>
         <Route exact path="/address" component={Address}/>
         <Route exact path="/userproductview/:id" component={UserProductView}/>
+        <Route exact path="/cart" component={()=><Cart user={user}/>}/>
+        <Route exact path="/viewaddress" component={UserAddress}/>
+        <Route exact path="/editaddress/:id" component={EditAddress}/>
         <Route  component={PageNotFound}/>
       </Switch>
       </div>
